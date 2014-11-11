@@ -1,5 +1,7 @@
 package com.uservoice.uservoicesdk.activity;
 
+import java.util.Locale;
+
 import android.os.Bundle;
 
 import com.uservoice.uservoicesdk.R;
@@ -30,7 +32,8 @@ public class PostIdeaActivity extends InstantAnswersActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.uv_idea_form_title);
+        textTitle.setText(getResources().getString(R.string.uv_idea_form_title).toUpperCase(Locale.ENGLISH));
+    		back.setText("Feedback");
     }
 
     @Override

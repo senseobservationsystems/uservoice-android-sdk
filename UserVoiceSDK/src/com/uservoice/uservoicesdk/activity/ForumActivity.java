@@ -44,7 +44,7 @@ public class ForumActivity extends SearchActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.uv_feedback_forum);
+        textTitle.setText(getResources().getString(R.string.uv_feedback_forum).toUpperCase(Locale.ENGLISH));
 
         List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
@@ -225,6 +225,7 @@ public class ForumActivity extends SearchActivity {
         }).init();
     }
 
+    /*
     @SuppressLint("NewApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -240,6 +241,7 @@ public class ForumActivity extends SearchActivity {
         menu.findItem(R.id.uv_new_idea).setVisible(Session.getInstance().getConfig().shouldShowPostIdea());
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
