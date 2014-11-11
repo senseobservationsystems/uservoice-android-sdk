@@ -39,7 +39,13 @@ public class Suggestion extends BaseModel {
         params.put("page", String.valueOf(page));
         params.put("per_page", "20");
         params.put("filter", "public");
-        params.put("sort", getClientConfig().getSuggestionSort());
+        if (getClientConfig() != null) {
+        	if (getClientConfig().getSuggestionSort() != null) {
+        		params.put("sort", getClientConfig().getSuggestionSort());
+        	}
+        } else {
+        	params.put("sort", "");
+        }
         doGet(apiPath("/forums/%d/suggestions.json", forum.getId()), params, new RestTaskCallback(callback) {
             @Override
             public void onComplete(JSONObject object) throws JSONException {
