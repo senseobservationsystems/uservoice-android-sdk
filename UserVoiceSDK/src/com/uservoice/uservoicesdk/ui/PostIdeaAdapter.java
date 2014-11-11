@@ -77,6 +77,7 @@ public class PostIdeaAdapter extends InstantAnswersAdapter {
                 restoreEnteredText(descriptionField, field, "");
                 descriptionField = field;
                 descriptionField.setHint(R.string.uv_idea_description_hint);
+                field.addTextChangedListener(new BoldTextWatcher(field));
             } else if (type == CATEGORY) {
                 view = inflater.inflate(R.layout.uv_select_field_item, null);
                 TextView title = (TextView) view.findViewById(R.id.uv_header_text);

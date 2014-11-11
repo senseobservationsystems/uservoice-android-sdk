@@ -9,12 +9,19 @@
     <EditText
         android:id="@+id/uv_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/uv_bg_rounded"
         android:ems="10"
-        android:minLines="3"
+        android:gravity="left|center_vertical"
         android:hint="@string/uv_contact_hint"
-        android:inputType="textMultiLine" >
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/uv_edittext_txt"
+        android:textColorHint="#CECECE"
+        android:textSize="15sp" >
 
         <requestFocus />
     </EditText>

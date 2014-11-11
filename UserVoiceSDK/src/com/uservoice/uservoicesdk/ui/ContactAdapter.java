@@ -74,6 +74,8 @@ public class ContactAdapter extends InstantAnswersAdapter {
         if (view == null) {
             if (type == CUSTOM_TEXT_FIELD) {
                 view = inflater.inflate(R.layout.uv_text_field_item, null);
+                final EditText et = (EditText) view.findViewById(R.id.uv_text_field);
+                et.addTextChangedListener(new BoldTextWatcher(et));
             } else if (type == CUSTOM_PREDEFINED_FIELD) {
                 view = inflater.inflate(R.layout.uv_select_field_item, null);
             } else {
@@ -84,6 +86,7 @@ public class ContactAdapter extends InstantAnswersAdapter {
         if (type == CUSTOM_TEXT_FIELD) {
             TextView title = (TextView) view.findViewById(R.id.uv_header_text);
             final EditText field = (EditText) view.findViewById(R.id.uv_text_field);
+            field.addTextChangedListener(new BoldTextWatcher(field));
             final CustomField customField = (CustomField) getItem(position);
             String value = customFieldValues.get(customField.getName());
             title.setText(customField.getName());

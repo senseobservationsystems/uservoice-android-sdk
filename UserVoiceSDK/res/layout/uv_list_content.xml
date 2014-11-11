@@ -3,6 +3,7 @@
     android:id="@+id/uv_view_flipper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:descendantFocusability="beforeDescendants" >
 
     <ListView

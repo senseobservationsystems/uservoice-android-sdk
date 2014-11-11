@@ -2,6 +2,7 @@ package com.uservoice.uservoicesdk.compatibility;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -117,6 +118,7 @@ public abstract class FragmentListActivity extends BaseActivity {
             return;
 
         mList = new ListView(this);
+        mList.setBackgroundColor(Color.parseColor("#FFFFFF"));
         mList.setId(android.R.id.list);
         ViewFlipper viewFlipper = new ViewFlipper(this);
         viewFlipper.setId(R.id.uv_view_flipper);
