@@ -5,6 +5,8 @@
 out
 .settings
 proguard_logs
+UserVoiceSDK/.classpath
+UserVoiceSDK/.project
 */build/*
 .gradle
 build
