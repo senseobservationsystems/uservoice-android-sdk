@@ -13,7 +13,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/uv_button_rounded"
+        android:background="@color/white30"
         android:text="@string/uv_next"
         android:textColor="@color/uv_button_txt"
         android:textSize="15sp"

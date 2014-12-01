@@ -118,7 +118,7 @@ public abstract class FragmentListActivity extends BaseActivity {
             return;
 
         mList = new ListView(this);
-        mList.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mList.setBackgroundResource(R.drawable.background1);
         mList.setId(android.R.id.list);
         ViewFlipper viewFlipper = new ViewFlipper(this);
         viewFlipper.setId(R.id.uv_view_flipper);

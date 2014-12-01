@@ -2,17 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#001D2C" >
+    android:background="@drawable/background1" >
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
+        android:background="@color/white30"
+        android:gravity="center"
         android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:typeface="sans" />
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:typeface="monospace" />
 
     <Button
         android:id="@+id/back"
@@ -20,12 +22,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
         android:background="#00000000"
         android:drawableLeft="@drawable/uv_back"
-        android:text="Account"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        android:text="Back"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
 </RelativeLayout>

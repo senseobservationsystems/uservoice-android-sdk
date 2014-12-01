@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/uv_bg_rounded"
+        android:background="@color/white20"
         android:ems="10"
         android:gravity="left|center_vertical"
         android:hint="@string/uv_contact_hint"

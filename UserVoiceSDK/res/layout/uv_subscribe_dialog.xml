@@ -12,7 +12,7 @@
         android:id="@+id/uv_email"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:background="@drawable/uv_bg_rounded"
+        android:background="@color/white20"
         android:ems="10"
         android:gravity="center_vertical|left"
         android:hint="@string/uv_email_address"
