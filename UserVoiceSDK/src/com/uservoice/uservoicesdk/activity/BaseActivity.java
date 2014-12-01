@@ -23,7 +23,6 @@ public class BaseActivity extends ActionBarActivity {
 	protected ActionBar actionBar;
 	protected static TextView textTitle;
 	protected static Button back;
-	public static Typeface fBold;
 	public static Typeface fReg;
 
 	@Override
@@ -45,8 +44,7 @@ public class BaseActivity extends ActionBarActivity {
 				}
 			});
 
-			fBold = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
-			fReg = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
+			fReg = Typeface.createFromAsset(getAssets(), "CALIBRIL.ttf");
 		}
 	}
 

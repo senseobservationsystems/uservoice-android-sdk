@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
-import com.uservoice.uservoicesdk.activity.BaseActivity;
 import com.uservoice.uservoicesdk.deflection.Deflection;
 import com.uservoice.uservoicesdk.model.Article;
 import com.uservoice.uservoicesdk.model.BaseModel;
@@ -58,35 +56,6 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
     protected int continueButtonMessage;
     protected String deflectingType;
     protected boolean isPosting;
-
-    protected Typeface fBd = BaseActivity.fBold;
-  	protected Typeface fRg = BaseActivity.fReg;
-  	
-  	public class BoldTextWatcher implements TextWatcher {
-  		private EditText mEditText;
-
-  	    public BoldTextWatcher(EditText et) { 
-  	        mEditText = et;
-  	    }
-
-  	    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    }
-
-  	    public void onTextChanged(CharSequence s, int start, int before, int count) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    }
-
-  	    public void afterTextChanged(Editable s) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    	if (s.length() == 0)
-  	    		mEditText.setTypeface(fRg);
-  	    }
-  		
-  	}
     
     public InstantAnswersAdapter(FragmentActivity context) {
         this.context = context;
@@ -212,24 +181,19 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
                             state = State.INIT;
                             notifyDataSetChanged();
                         }
-                        if (s.length() > 0) { textField.setTypeface(fBd); }
                     }
 
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    	if (s.length() > 0) { textField.setTypeface(fBd); }
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                    	if (s.length() > 0) { textField.setTypeface(fBd); }
-                    	else { textField.setTypeface(fRg); }
                     }
                 });
             } else if (type == EMAIL_FIELD || type == NAME_FIELD) {
                 view = inflater.inflate(R.layout.uv_text_field_item, null);
                 final EditText et = (EditText) view.findViewById(R.id.uv_text_field);
-                et.addTextChangedListener(new BoldTextWatcher(et));
             }
         }
 
@@ -256,7 +220,6 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
         } else if (type == EMAIL_FIELD || type == NAME_FIELD) {
             TextView title = (TextView) view.findViewById(R.id.uv_header_text);
             final EditText field = (EditText) view.findViewById(R.id.uv_text_field);
-            field.addTextChangedListener(new BoldTextWatcher(field));
             if (type == EMAIL_FIELD) {
                 title.setText(R.string.uv_your_email_address);
                 restoreEnteredText(emailField, field, Session.getInstance().getEmail());

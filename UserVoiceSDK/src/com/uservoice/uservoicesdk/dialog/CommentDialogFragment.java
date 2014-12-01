@@ -6,8 +6,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
-import com.uservoice.uservoicesdk.activity.BaseActivity;
 import com.uservoice.uservoicesdk.flow.SigninCallback;
 import com.uservoice.uservoicesdk.flow.SigninManager;
 import com.uservoice.uservoicesdk.model.Comment;
@@ -45,28 +42,6 @@ public class CommentDialogFragment extends DialogFragmentBugfixed {
 
         View view = getActivity().getLayoutInflater().inflate(R.layout.uv_comment_dialog, null);
         final EditText textField = (EditText) view.findViewById(R.id.uv_comment_edit_text);
-        textField.addTextChangedListener(new TextWatcher() {
-    			@Override
-    			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-    				if (arg0.length() > 0)
-    					textField.setTypeface(BaseActivity.fBold);
-    			}
-    			
-    			@Override
-    			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-    					int arg3) {
-    				if (arg0.length() > 0)
-    					textField.setTypeface(BaseActivity.fBold);
-    			}
-    			
-    			@Override
-    			public void afterTextChanged(Editable arg0) {
-    		    	if (arg0.length() > 0)
-    		    		textField.setTypeface(BaseActivity.fBold);
-    				if (arg0.length() == 0)
-    					textField.setTypeface(BaseActivity.fReg);
-    			}
-    		});
 
         View email = view.findViewById(R.id.uv_email);
         View name = view.findViewById(R.id.uv_name);
