@@ -23,7 +23,6 @@ public class BaseActivity extends ActionBarActivity {
 	protected ActionBar actionBar;
 	protected static TextView textTitle;
 	protected static Button back;
-	public static Typeface fReg;
 
 	@Override
 	@SuppressLint("NewApi")
@@ -31,20 +30,19 @@ public class BaseActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		if (hasActionBar()) {
 			ActionBar bar = getSupportActionBar();
-			bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-			bar.setCustomView(R.layout.uv_action_bar);
-
-			textTitle = (TextView) findViewById(R.id.title);
-
-			back = (Button) findViewById(R.id.back);
-			back.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					onBackPressed();
-				}
-			});
-
-			fReg = Typeface.createFromAsset(getAssets(), "CALIBRIL.ttf");
+			bar.hide();
+			// bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			// bar.setCustomView(R.layout.uv_action_bar);
+			//
+			// textTitle = (TextView) findViewById(R.id.title);
+			//
+			// back = (Button) findViewById(R.id.back);
+			// back.setOnClickListener(new OnClickListener() {
+			// @Override
+			// public void onClick(View arg0) {
+			// onBackPressed();
+			// }
+			// });
 		}
 	}
 

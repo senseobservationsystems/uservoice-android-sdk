@@ -2,26 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp" >
+    android:orientation="vertical" >
+
+    <include layout="@layout/uv_action_bar_view" />
 
     <EditText
         android:id="@+id/uv_text"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white20"
         android:ems="10"
         android:gravity="left|center_vertical"
         android:hint="@string/uv_contact_hint"
         android:inputType="textMultiLine"
         android:minLines="3"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textColor="@color/uv_edittext_txt"
-        android:textColorHint="#CECECE"
-        android:textSize="15sp" >
+        android:textColorHint="@color/text_color"
+        android:textSize="18sp"
+        android:typeface="monospace" >
 
         <requestFocus />
     </EditText>

@@ -44,7 +44,6 @@ public class ForumActivity extends SearchActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        textTitle.setText(getResources().getString(R.string.uv_feedback_forum).toUpperCase(Locale.ENGLISH));
 
         List<Suggestion> suggestions = new ArrayList<Suggestion>();
 

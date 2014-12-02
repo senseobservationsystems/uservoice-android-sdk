@@ -22,11 +22,12 @@
             android:ems="10"
             android:gravity="center_vertical|left"
             android:inputType="text"
-            android:paddingLeft="23dp"
-            android:paddingRight="23dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="@color/uv_edittext_txt"
-            android:textColorHint="#CECECE"
-            android:textSize="15sp" >
+            android:textColorHint="@color/text_color"
+            android:textSize="18sp"
+            android:typeface="monospace" >
 
             <requestFocus />
         </EditText>

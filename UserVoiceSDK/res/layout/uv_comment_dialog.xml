@@ -22,11 +22,12 @@
             android:hint="@string/uv_comment_hint"
             android:inputType="textMultiLine"
             android:minHeight="60dp"
-            android:paddingLeft="23dp"
-            android:paddingRight="23dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="@color/uv_edittext_txt"
-            android:textColorHint="#CECECE"
-            android:textSize="15sp" />
+            android:textColorHint="@color/text_disabled"
+            android:textSize="18sp"
+            android:typeface="monospace" />
 
         <LinearLayout
             android:id="@+id/uv_email"
@@ -44,11 +45,12 @@
                 android:ems="10"
                 android:hint="@string/uv_email_address"
                 android:inputType="textEmailAddress"
-                android:paddingLeft="23dp"
-                android:paddingRight="23dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:textColor="@color/uv_edittext_txt"
-                android:textColorHint="#CECECE"
-                android:textSize="15sp" >
+                android:textColorHint="@color/text_disabled"
+                android:textSize="18sp"
+                android:typeface="monospace" >
             </EditText>
         </LinearLayout>
 
@@ -67,11 +69,12 @@
                 android:background="@color/white20"
                 android:ems="10"
                 android:hint="@string/uv_name_hint"
-                android:paddingLeft="23dp"
-                android:paddingRight="23dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:textColor="@color/uv_edittext_txt"
-                android:textColorHint="#CECECE"
-                android:textSize="15sp" >
+                android:textColorHint="@color/text_disabled"
+                android:textSize="18sp"
+                android:typeface="monospace" >
             </EditText>
         </LinearLayout>
     </LinearLayout>

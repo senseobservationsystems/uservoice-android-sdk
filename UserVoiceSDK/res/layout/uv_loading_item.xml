@@ -14,7 +14,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:text="@string/uv_loading"
-        android:textSize="20sp" />
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
     <ProgressBar
         android:layout_width="30dp"

@@ -2,18 +2,20 @@ package com.uservoice.uservoicesdk.compatibility;
 
 import android.app.Activity;
 import android.app.ListActivity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.activity.BaseActivity;
+import com.uservoice.uservoicesdk.ui.ActionBarHeader;
 
 /**
  * <em>Copy from Android source to enable {@link Fragment} support.</em>
@@ -118,11 +120,16 @@ public abstract class FragmentListActivity extends BaseActivity {
             return;
 
         mList = new ListView(this);
-        mList.setBackgroundResource(R.drawable.background1);
         mList.setId(android.R.id.list);
         ViewFlipper viewFlipper = new ViewFlipper(this);
+        viewFlipper.setBackgroundResource(R.drawable.background1);
         viewFlipper.setId(R.id.uv_view_flipper);
         viewFlipper.addView(mList);
+//        ActionBarHeader header = new ActionBarHeader(this);
+//        LinearLayout container = new LinearLayout(this);
+//        container.setOrientation(LinearLayout.VERTICAL);
+//        container.addView(header);
+//        container.addView(mList);
         setContentView(viewFlipper);
         mList.setOnItemClickListener(mOnClickListener);
         if (mFinishedStart) {
@@ -134,6 +141,7 @@ public abstract class FragmentListActivity extends BaseActivity {
 
     private AdapterView.OnItemClickListener mOnClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+          Log.d("LALALA", parent.toString() + ":" + position + ":" + id);
             onListItemClick((ListView) parent, v, position, id);
         }
     };
