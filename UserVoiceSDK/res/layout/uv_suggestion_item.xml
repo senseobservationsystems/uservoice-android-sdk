@@ -20,7 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Suggestion Title"
-            android:textSize="14sp" />
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:typeface="monospace" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -31,17 +33,18 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/uv_heart" />
 
             <TextView
                 android:id="@+id/uv_subscriber_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
                 android:paddingLeft="3dp"
+                android:text="12"
                 android:textColor="#999999"
-                android:textSize="10sp" />
+                android:textSize="14sp"
+                android:typeface="monospace" />
 
             <View
                 android:id="@+id/uv_suggestion_status_color"
@@ -58,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:text="UNDER REVIEW"
                 android:textColor="#999999"
-                android:textSize="10sp" />
+                android:textSize="14sp"
+                android:typeface="monospace" />
         </LinearLayout>
     </LinearLayout>
 

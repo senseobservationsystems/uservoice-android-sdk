@@ -127,6 +127,8 @@ public class ForumActivity extends SearchActivity {
                         } else {
                             view = getLayoutInflater().inflate(R.layout.uv_header_item_light, null);
                             TextView text = (TextView) view.findViewById(R.id.uv_header_text);
+                            text.setTextColor(getResources().getColor(R.color.text_color));
+                            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                             text.setText(R.string.uv_idea_text_heading);
                         }
                     }

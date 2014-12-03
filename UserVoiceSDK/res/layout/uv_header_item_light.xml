@@ -12,6 +12,7 @@
         android:id="@+id/uv_header_text"
         android:text="@string/uv_knowledge_base"
         android:textIsSelectable="false"
+        android:typeface="monospace"
         style="@style/uv_ListSeparatorLight" />
 
 </LinearLayout>
