@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -125,11 +126,14 @@ public abstract class FragmentListActivity extends BaseActivity {
         viewFlipper.setBackgroundResource(R.drawable.background1);
         viewFlipper.setId(R.id.uv_view_flipper);
         viewFlipper.addView(mList);
-//        ActionBarHeader header = new ActionBarHeader(this);
-//        LinearLayout container = new LinearLayout(this);
-//        container.setOrientation(LinearLayout.VERTICAL);
-//        container.addView(header);
-//        container.addView(mList);
+        // add actionbar height padding
+        TypedValue tv = new TypedValue();
+        int actionBarHeight = 0;
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
+        {
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,getResources().getDisplayMetrics());
+        }
+        viewFlipper.setPadding(0, actionBarHeight, 0, 0);
         setContentView(viewFlipper);
         mList.setOnItemClickListener(mOnClickListener);
         if (mFinishedStart) {

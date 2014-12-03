@@ -172,12 +172,6 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
                 view.setPadding(0, 30, 0, 0);
             } else if (type == TEXT) {
                 view = inflater.inflate(R.layout.uv_contact_text_item, null);
-                ((TextView) view.findViewById(R.id.top_bar_back)).setOnClickListener(new OnClickListener() {
-									@Override
-									public void onClick(View arg0) {
-										context.finish();
-									}
-								});
                 EditText field = (EditText) view.findViewById(R.id.uv_text);
                 restoreEnteredText(textField, field, "");
                 textField = field;

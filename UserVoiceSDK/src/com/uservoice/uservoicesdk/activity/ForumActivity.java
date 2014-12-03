@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +46,7 @@ public class ForumActivity extends SearchActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        textTitle.setText(getResources().getString(R.string.uv_feedback_forum));
 
         List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
@@ -115,6 +118,10 @@ public class ForumActivity extends SearchActivity {
                             view = getLayoutInflater().inflate(R.layout.uv_text_item, null);
                             TextView text = (TextView) view.findViewById(R.id.uv_text);
                             text.setText(R.string.uv_post_an_idea);
+                            text.setTextColor(getResources().getColor(R.color.text_color));
+                            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                            text.setBackgroundResource(R.color.white30);
+                            text.setGravity(Gravity.CENTER);
                             view.findViewById(R.id.uv_divider).setVisibility(View.GONE);
                             view.findViewById(R.id.uv_text2).setVisibility(View.GONE);
                         } else {

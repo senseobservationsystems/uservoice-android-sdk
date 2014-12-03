@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/uv_action_bar_view" />
-
     <EditText
         android:id="@+id/uv_text"
         android:layout_width="match_parent"
