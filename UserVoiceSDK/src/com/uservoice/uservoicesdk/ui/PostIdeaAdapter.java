@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -46,8 +47,21 @@ public class PostIdeaAdapter extends InstantAnswersAdapter {
     protected List<Integer> getDetailRows() {
         List<Integer> rows = new ArrayList<Integer>();
         rows.add(DESCRIPTION);
-        if (Session.getInstance().getForum().getCategories().size() > 0)
-            rows.add(CATEGORY);
+        if (Session.getInstance() != null) {
+        	if (Session.getInstance().getForum() != null) {
+        		if (Session.getInstance().getForum().getCategories() != null) {
+        			 if (Session.getInstance().getForum().getCategories().size() > 0)
+                 rows.add(CATEGORY);
+        		} else {
+        			Log.d("USERVOICE", "null pointer on getCategories()?");
+        		}
+        	} else {
+        		Log.d("USERVOICE", "null pointer on getForum()?");
+        	}
+        } else {
+        	Log.d("USERVOICE", "null pointer on Session.getInstance()?");
+        }
+       
         rows.add(SPACE);
         rows.add(EMAIL_FIELD);
         rows.add(NAME_FIELD);
