@@ -4,11 +4,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.+'
+        classpath 'com.android.tools.build:gradle:1.1.0'
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 apply plugin: 'maven'
  
@@ -32,12 +32,12 @@ artifacts {
 }
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '21.0.2'
+    buildToolsVersion '21.1.2'
 
     sourceSets {
         main {
@@ -53,6 +53,8 @@ dependencies {
     compile 'com.android.support:support-v4:19.'
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'commons-codec:commons-codec:1.8'
-    compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
     compile 'oauth.signpost:signpost-core:1.2.1.2'
+    compile ('oauth.signpost:signpost-commonshttp4:1.2.1.2'){
+        exclude module: 'httpclient'
+    }
 }
