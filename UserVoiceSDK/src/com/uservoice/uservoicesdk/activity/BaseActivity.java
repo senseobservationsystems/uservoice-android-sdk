@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.uservoice.uservoicesdk.R;
+import com.uservoice.uservoicesdk.UserVoice;
 import com.uservoice.uservoicesdk.ui.MixedSearchAdapter;
 
 public class BaseActivity extends ActionBarActivity {
@@ -23,8 +24,6 @@ public class BaseActivity extends ActionBarActivity {
 	protected ActionBar actionBar;
 	protected static TextView textTitle;
 	protected static Button back;
-	public static Typeface fBold;
-	public static Typeface fReg;
 
 	@Override
 	@SuppressLint("NewApi")
@@ -45,8 +44,8 @@ public class BaseActivity extends ActionBarActivity {
 				}
 			});
 
-			fBold = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
-			fReg = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
+			UserVoice.fBold = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+			UserVoice.fReg = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
 		}
 	}
 

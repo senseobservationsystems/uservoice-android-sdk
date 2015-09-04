@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
-import com.uservoice.uservoicesdk.activity.BaseActivity;
+import com.uservoice.uservoicesdk.UserVoice;
 import com.uservoice.uservoicesdk.flow.SigninCallback;
 import com.uservoice.uservoicesdk.flow.SigninManager;
 import com.uservoice.uservoicesdk.model.Comment;
@@ -49,22 +49,22 @@ public class CommentDialogFragment extends DialogFragmentBugfixed {
     			@Override
     			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
     				if (arg0.length() > 0)
-    					textField.setTypeface(BaseActivity.fBold);
+    					textField.setTypeface(UserVoice.fBold);
     			}
     			
     			@Override
     			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
     					int arg3) {
     				if (arg0.length() > 0)
-    					textField.setTypeface(BaseActivity.fBold);
+    					textField.setTypeface(UserVoice.fBold);
     			}
     			
     			@Override
     			public void afterTextChanged(Editable arg0) {
     		    	if (arg0.length() > 0)
-    		    		textField.setTypeface(BaseActivity.fBold);
+    		    		textField.setTypeface(UserVoice.fBold);
     				if (arg0.length() == 0)
-    					textField.setTypeface(BaseActivity.fReg);
+    					textField.setTypeface(UserVoice.fReg);
     			}
     		});
 

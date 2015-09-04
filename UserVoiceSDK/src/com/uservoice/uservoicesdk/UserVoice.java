@@ -1,20 +1,21 @@
 package com.uservoice.uservoicesdk;
 
-import java.util.Map;
-
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 
 import com.uservoice.uservoicesdk.activity.ContactActivity;
 import com.uservoice.uservoicesdk.activity.ForumActivity;
 import com.uservoice.uservoicesdk.activity.PortalActivity;
 import com.uservoice.uservoicesdk.activity.PostIdeaActivity;
 import com.uservoice.uservoicesdk.babayaga.Babayaga;
-import com.uservoice.uservoicesdk.model.ClientConfig;
-import com.uservoice.uservoicesdk.rest.RestResult;
-import com.uservoice.uservoicesdk.ui.DefaultCallback;
+
+import java.util.Map;
 
 public class UserVoice {
+
+    public static Typeface fBold;
+    public static Typeface fReg;
 
     public static void launchUserVoice(Context context) {
         context.startActivity(new Intent(context, PortalActivity.class));
@@ -54,5 +55,21 @@ public class UserVoice {
 
     public static String getVersion() {
         return "1.1.2";
+    }
+
+    public static Typeface getfReg() {
+        return fReg;
+    }
+
+    public static void setfReg(Typeface fReg) {
+        UserVoice.fReg = fReg;
+    }
+
+    public static Typeface getfBold() {
+        return fBold;
+    }
+
+    public static void setfBold(Typeface fBold) {
+        UserVoice.fBold = fBold;
     }
 }

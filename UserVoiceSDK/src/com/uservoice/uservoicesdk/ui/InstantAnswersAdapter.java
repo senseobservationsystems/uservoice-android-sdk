@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
-import com.uservoice.uservoicesdk.activity.BaseActivity;
+import com.uservoice.uservoicesdk.UserVoice;
 import com.uservoice.uservoicesdk.deflection.Deflection;
 import com.uservoice.uservoicesdk.model.Article;
 import com.uservoice.uservoicesdk.model.BaseModel;
@@ -59,8 +59,8 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
     protected String deflectingType;
     protected boolean isPosting;
 
-    protected Typeface fBd = BaseActivity.fBold;
-  	protected Typeface fRg = BaseActivity.fReg;
+    protected Typeface fBd = UserVoice.fBold;
+  	protected Typeface fRg = UserVoice.fReg;
   	
   	public class BoldTextWatcher implements TextWatcher {
   		private EditText mEditText;
