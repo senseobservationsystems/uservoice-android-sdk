@@ -1,7 +1,6 @@
 package com.uservoice.uservoicesdk.activity;
 
 import android.annotation.SuppressLint;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.uservoice.uservoicesdk.R;
-import com.uservoice.uservoicesdk.UserVoice;
 import com.uservoice.uservoicesdk.ui.MixedSearchAdapter;
 
 public class BaseActivity extends ActionBarActivity {
@@ -43,9 +41,6 @@ public class BaseActivity extends ActionBarActivity {
 					onBackPressed();
 				}
 			});
-
-			UserVoice.fBold = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
-			UserVoice.fReg = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
 		}
 	}
 
