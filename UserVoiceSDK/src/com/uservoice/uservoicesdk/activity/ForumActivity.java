@@ -1,22 +1,15 @@
 package com.uservoice.uservoicesdk.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.uservoice.uservoicesdk.Config;
@@ -34,8 +27,10 @@ import com.uservoice.uservoicesdk.ui.DefaultCallback;
 import com.uservoice.uservoicesdk.ui.PaginatedAdapter;
 import com.uservoice.uservoicesdk.ui.PaginationScrollListener;
 import com.uservoice.uservoicesdk.ui.SearchAdapter;
-import com.uservoice.uservoicesdk.ui.SearchExpandListener;
-import com.uservoice.uservoicesdk.ui.SearchQueryListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ForumActivity extends SearchActivity {
 
@@ -44,7 +39,7 @@ public class ForumActivity extends SearchActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        textTitle.setText(getResources().getString(R.string.uv_feedback_forum).toUpperCase(Locale.ENGLISH));
+        //textTitle.setText(getResources().getString(R.string.uv_feedback_forum).toUpperCase(Locale.ENGLISH));
 
         List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
@@ -68,6 +63,7 @@ public class ForumActivity extends SearchActivity {
                 if (staticRows == null) {
                     staticRows = new ArrayList<Integer>();
                     Config config = Session.getInstance().getConfig();
+                    staticRows.add(4);
                     if (config.shouldShowPostIdea())
                         staticRows.add(2);
                     staticRows.add(3);
@@ -76,7 +72,7 @@ public class ForumActivity extends SearchActivity {
 
             @Override
             public int getViewTypeCount() {
-                return super.getViewTypeCount() + 2;
+                return super.getViewTypeCount() + 3;
             }
 
             @Override
@@ -109,7 +105,7 @@ public class ForumActivity extends SearchActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 int type = getItemViewType(position);
-                if (type == 2 || type == 3) {
+                if (type == 2 || type == 3 || type == 4) {
                     View view = convertView;
                     if (view == null) {
                         if (type == 2) {
@@ -118,10 +114,21 @@ public class ForumActivity extends SearchActivity {
                             text.setText(R.string.uv_post_an_idea);
                             view.findViewById(R.id.uv_divider).setVisibility(View.GONE);
                             view.findViewById(R.id.uv_text2).setVisibility(View.GONE);
-                        } else {
+                        } else if (type == 3) {
                             view = getLayoutInflater().inflate(R.layout.uv_header_item_light, null);
                             TextView text = (TextView) view.findViewById(R.id.uv_header_text);
                             text.setText(R.string.uv_idea_text_heading);
+                        } else if (type == 4) {
+                            view = inflater.inflate(R.layout.uv_action_bar, null);
+                            final TextView title = (TextView) view.findViewById(R.id.title);
+                            title.setText(getResources().getString(R.string.uv_feedback_forum).toUpperCase(Locale.ENGLISH));
+                            final Button back = (Button) view.findViewById(R.id.back);
+                            back.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View arg0) {
+                                    onBackPressed();
+                                }
+                            });
                         }
                     }
                     return view;
@@ -137,15 +144,15 @@ public class ForumActivity extends SearchActivity {
 
                 textView = (TextView) view.findViewById(R.id.uv_subscriber_count);
                 if (Session.getInstance() != null) {
-                	if (Session.getInstance().getClientConfig() != null) {
-                		if (Session.getInstance().getClientConfig().shouldDisplaySuggestionsByRank()) {
-                      textView.setText(model.getRankString());
-                  } else {
-                      textView.setText(String.valueOf(model.getNumberOfSubscribers()));
-                  }
-                	}
+                    if (Session.getInstance().getClientConfig() != null) {
+                        if (Session.getInstance().getClientConfig().shouldDisplaySuggestionsByRank()) {
+                            textView.setText(model.getRankString());
+                        } else {
+                            textView.setText(String.valueOf(model.getNumberOfSubscribers()));
+                        }
+                    }
                 }
-                
+
                 textView = (TextView) view.findViewById(R.id.uv_suggestion_status);
                 View colorView = view.findViewById(R.id.uv_suggestion_status_color);
                 if (model.getStatus() == null) {

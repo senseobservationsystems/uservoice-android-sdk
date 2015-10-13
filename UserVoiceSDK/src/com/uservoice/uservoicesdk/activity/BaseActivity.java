@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.ui.MixedSearchAdapter;
 
 public class BaseActivity extends ActionBarActivity {
@@ -28,7 +25,7 @@ public class BaseActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (hasActionBar()) {
-			ActionBar bar = getSupportActionBar();
+			/*ActionBar bar = getSupportActionBar();
 			bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 			bar.setCustomView(R.layout.uv_action_bar);
 
@@ -40,7 +37,9 @@ public class BaseActivity extends ActionBarActivity {
 				public void onClick(View arg0) {
 					onBackPressed();
 				}
-			});
+			});*/
+
+            getSupportActionBar().hide();
 		}
 	}
 

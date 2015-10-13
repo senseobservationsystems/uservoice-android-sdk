@@ -32,6 +32,7 @@ import com.uservoice.uservoicesdk.model.Suggestion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewGroup.OnHierarchyChangeListener, OnItemClickListener {
 
@@ -47,6 +48,7 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
     protected int EMAIL_FIELD = 5;
     protected int NAME_FIELD = 6;
     protected int SPACE = 7;
+    protected int HEADER = 10;
 
     protected State state = State.INIT;
     protected List<BaseModel> instantAnswers;
@@ -60,34 +62,34 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
     protected boolean isPosting;
 
     protected Typeface fBd = UserVoice.fBold;
-  	protected Typeface fRg = UserVoice.fReg;
-  	
-  	public class BoldTextWatcher implements TextWatcher {
-  		private EditText mEditText;
+    protected Typeface fRg = UserVoice.fReg;
 
-  	    public BoldTextWatcher(EditText et) { 
-  	        mEditText = et;
-  	    }
+    public class BoldTextWatcher implements TextWatcher {
+        private EditText mEditText;
 
-  	    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    }
+        public BoldTextWatcher(EditText et) {
+            mEditText = et;
+        }
 
-  	    public void onTextChanged(CharSequence s, int start, int before, int count) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    }
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            if (s.length() > 0)
+                mEditText.setTypeface(fBd);
+        }
 
-  	    public void afterTextChanged(Editable s) {
-  	    	if (s.length() > 0)
-  	    		mEditText.setTypeface(fBd);
-  	    	if (s.length() == 0)
-  	    		mEditText.setTypeface(fRg);
-  	    }
-  		
-  	}
-    
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (s.length() > 0)
+                mEditText.setTypeface(fBd);
+        }
+
+        public void afterTextChanged(Editable s) {
+            if (s.length() > 0)
+                mEditText.setTypeface(fBd);
+            if (s.length() == 0)
+                mEditText.setTypeface(fRg);
+        }
+
+    }
+
     public InstantAnswersAdapter(FragmentActivity context) {
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -101,11 +103,12 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
 
     @Override
     public int getViewTypeCount() {
-        return 8;
+        return 9;
     }
 
     protected List<Integer> getRows() {
         List<Integer> rows = new ArrayList<Integer>();
+        rows.add(HEADER);
         rows.add(TEXT);
         if (state != State.INIT && state != State.INIT_LOADING && !instantAnswers.isEmpty()) {
             rows.add(SPACE);
@@ -212,24 +215,42 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
                             state = State.INIT;
                             notifyDataSetChanged();
                         }
-                        if (s.length() > 0) { textField.setTypeface(fBd); }
+                        if (s.length() > 0) {
+                            textField.setTypeface(fBd);
+                        }
                     }
 
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    	if (s.length() > 0) { textField.setTypeface(fBd); }
+                        if (s.length() > 0) {
+                            textField.setTypeface(fBd);
+                        }
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                    	if (s.length() > 0) { textField.setTypeface(fBd); }
-                    	else { textField.setTypeface(fRg); }
+                        if (s.length() > 0) {
+                            textField.setTypeface(fBd);
+                        } else {
+                            textField.setTypeface(fRg);
+                        }
                     }
                 });
             } else if (type == EMAIL_FIELD || type == NAME_FIELD) {
                 view = inflater.inflate(R.layout.uv_text_field_item, null);
                 final EditText et = (EditText) view.findViewById(R.id.uv_text_field);
                 et.addTextChangedListener(new BoldTextWatcher(et));
+            } else if (type == HEADER) {
+                view = inflater.inflate(R.layout.uv_action_bar, null);
+                final TextView title = (TextView) view.findViewById(R.id.title);
+                title.setText(context.getResources().getString(R.string.uv_contact_us).toUpperCase(Locale.ENGLISH));
+                final Button back = (Button) view.findViewById(R.id.back);
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        context.onBackPressed();
+                    }
+                });
             }
         }
 
@@ -315,7 +336,7 @@ public abstract class InstantAnswersAdapter extends BaseAdapter implements ViewG
             state = State.INIT_LOADING;
             notifyDataSetChanged();
             Deflection.setSearchText(query);
-            InputMethodManager imm = (InputMethodManager)context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
             imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
             Article.loadInstantAnswers(query, new DefaultCallback<List<BaseModel>>(context) {
                 @Override
