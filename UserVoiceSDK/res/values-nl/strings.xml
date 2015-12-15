@@ -110,5 +110,6 @@
     <string name="uv_article_browse_question">Was dit artikel nuttig?</string>
     <string name="uv_thanks">Bedankt!</string>
     <string name="uv_msg_bad_email_format">Please enter a valid email address.</string>
+    <string name="uv_actionbar_back">_Account</string>
 
 </resources>
