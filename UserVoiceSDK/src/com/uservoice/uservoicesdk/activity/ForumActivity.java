@@ -112,6 +112,12 @@ public class ForumActivity extends SearchActivity {
                             view = getLayoutInflater().inflate(R.layout.uv_text_item, null);
                             TextView text = (TextView) view.findViewById(R.id.uv_text);
                             text.setText(R.string.uv_post_an_idea);
+                            text.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(ForumActivity.this, PostIdeaActivity.class));
+                                }
+                            });
                             view.findViewById(R.id.uv_divider).setVisibility(View.GONE);
                             view.findViewById(R.id.uv_text2).setVisibility(View.GONE);
                         } else if (type == 3) {
