@@ -11,7 +11,6 @@ public class ContactActivity extends InstantAnswersActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //textTitle.setText(getResources().getString(R.string.uv_contact_us).toUpperCase(Locale.ENGLISH));
     }
 
     @Override
